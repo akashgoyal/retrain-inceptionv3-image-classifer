@@ -2,10 +2,8 @@ import argparse
 import train
 import test
 
-#keras_models= ['inceptionv3']
-
 if __name__ == '__main__':
-    task = 'train'
+    task = 'test'
     data_dir_train = "./data/train_data"
     data_dir_valid = "./data/validate_data"
     data_dir_test = "./data/test_data"
@@ -14,7 +12,7 @@ if __name__ == '__main__':
     batch_size = 16
     training_type = "train_all"
     save_loc = "models/"
-    weights' = 'imagenet'
+    weights = 'imagenet'
     results_loc = 'results/'
 
     #print_arguments()
@@ -33,7 +31,7 @@ if __name__ == '__main__':
 
     if task.lower() == 'train':
         output_string = train.train_model(data_dir_train, data_dir_valid, batch_size, epochs, model_name, training_type, save_loc, weights)
-    elif args.task.lower() == 'test':
+    elif task.lower() == 'test':
         output_string = test.test_model(data_dir_train, data_dir_test, batch_size, model_name, save_loc, results_loc)
     else:
         output_string = "Incorrect Task"
